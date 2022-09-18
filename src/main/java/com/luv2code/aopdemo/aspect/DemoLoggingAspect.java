@@ -41,7 +41,16 @@ public class DemoLoggingAspect {
 		returning="result"
 	)
 	public void afterReturningFindAllAccountAdvice(JoinPoint jp, List<Account> result) {
-		System.out.println("In the aspect");
-		System.out.println(result);
+		System.out.println("===>>>> In the aspect");
+
+		convertNameToUpperCase(result);
+	}
+
+	private void convertNameToUpperCase(List<Account> accounts) {
+		if(!accounts.isEmpty()) {
+			for(Account a: accounts) {
+				a.setName(a.getName().toUpperCase());
+			}
+		}
 	}
 }

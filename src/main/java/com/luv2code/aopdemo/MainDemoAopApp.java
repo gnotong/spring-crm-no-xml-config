@@ -22,6 +22,9 @@ public class MainDemoAopApp {
 		
 		List<Account> accounts = accountDao.findAll();
 		
+		System.out.println("===>>>> accountDao.findAll in MainDemoAopApp");
+		System.out.println(accounts);
+		
 		MembershipDAO membershipDao = context.getBean("membershipDAO", MembershipDAO.class);
 		membershipDao.addAccount();
 		

@@ -20,9 +20,9 @@ public class AccountDAO {
 	public List<Account> findAll() {
 		List<Account> accounts = new ArrayList<>();
 
-		accounts.add(new Account("BABA"));
-		accounts.add(new Account("NAHEMA"));
-		accounts.add(new Account("GABS"));
+		accounts.add(new Account("Yann"));
+		accounts.add(new Account("nahema"));
+		accounts.add(new Account("Maya"));
 		
 		return accounts;
 	}
