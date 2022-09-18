@@ -1,7 +1,9 @@
 package com.luv2code.aopdemo.aspect;
 
+import java.util.List;
+
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -32,5 +34,14 @@ public class DemoLoggingAspect {
 			}
 			System.out.println(arg);
 		}
+	}
+	
+	@AfterReturning(
+		pointcut="execution(* com.luv2code.aopdemo.dao.AccountDAO.findAll(..))",
+		returning="result"
+	)
+	public void afterReturningFindAllAccountAdvice(JoinPoint jp, List<Account> result) {
+		System.out.println("In the aspect");
+		System.out.println(result);
 	}
 }

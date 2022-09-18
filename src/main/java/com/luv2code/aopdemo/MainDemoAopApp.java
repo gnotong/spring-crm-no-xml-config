@@ -1,5 +1,7 @@
 package com.luv2code.aopdemo;
 
+import java.util.List;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.luv2code.aopdemo.config.DemoAOPConfig;
@@ -17,6 +19,8 @@ public class MainDemoAopApp {
 		accountDao.addAccount(new Account("Fortuneo"), true);
 		accountDao.setName("YOYOO");
 		accountDao.getName();
+		
+		List<Account> accounts = accountDao.findAll();
 		
 		MembershipDAO membershipDao = context.getBean("membershipDAO", MembershipDAO.class);
 		membershipDao.addAccount();
