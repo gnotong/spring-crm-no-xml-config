@@ -2,6 +2,7 @@ package com.luv2code.aopdemo.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.stereotype.Component;
 
@@ -17,16 +18,27 @@ public class AccountDAO {
 		System.out.println(account + " is added=" + isAdded);
 	}
 	
-	public List<Account> findAll() throws Exception {
+	public List<Account> findAll() {
 		List<Account> accounts = new ArrayList<>();
 
 		accounts.add(new Account("Yann"));
 		accounts.add(new Account("nahema"));
 		accounts.add(new Account("Maya"));
 		
-		if (true) {
-			throw new Exception("An error occurs in findAll");
+		return accounts;
+	}
+	
+	public List<Account> findAllDelay() {
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
+		List<Account> accounts = new ArrayList<>();
+
+		accounts.add(new Account("Yann"));
+		accounts.add(new Account("nahema"));
+		accounts.add(new Account("Maya"));
 		
 		return accounts;
 	}

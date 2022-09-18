@@ -20,11 +20,14 @@ public class MainDemoAopApp {
 		accountDao.setName("YOYOO");
 		accountDao.getName();
 
-		List<Account> accounts;
+		List<Account> accounts, delayedAccounts;
 		try {
 			accounts = accountDao.findAll();
+			delayedAccounts = accountDao.findAllDelay();
 			System.out.println("===>>>> accountDao.findAll in MainDemoAopApp");
 			System.out.println(accounts);
+			System.out.println("===>>>> accountDao.findAllDelay in MainDemoAopApp");
+			System.out.println(delayedAccounts);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

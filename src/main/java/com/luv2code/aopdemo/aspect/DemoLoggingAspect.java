@@ -3,8 +3,10 @@ package com.luv2code.aopdemo.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -53,6 +55,22 @@ public class DemoLoggingAspect {
 	)
 	public void afterThrowingFindAllAccountAdvice(JoinPoint jp, Throwable exception) {
 		System.out.println("Exception = " + exception.getMessage());
+	}
+	
+	@Around("execution(* com.luv2code.aopdemo.dao.*.findAllDelay(..))")
+	public Object aroundFindAllAccountAdvice(ProceedingJoinPoint pjp) throws Throwable {
+		
+		long begin = System.currentTimeMillis();
+		
+		Object result = pjp.proceed(); // launches the method findAllDelay
+		
+		long end = System.currentTimeMillis();
+		
+		long duration = end - begin;
+		
+		System.out.println("Duration = " + duration + " ms");
+		
+		return result;
 	}
 
 	private void convertNameToUpperCase(List<Account> accounts) {
