@@ -12,10 +12,12 @@ public class MainDemoAopApp {
 
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoAOPConfig.class);
 
-		AccountDAO accountDao = context.getBean("accountDAO", AccountDAO.class);
-		MembershipDAO membershipDao = context.getBean("membershipDAO", MembershipDAO.class);
-		
+		AccountDAO accountDao = context.getBean("accountDAO", AccountDAO.class);		
 		accountDao.addAccount();
+		accountDao.setName("YOYOO");
+		accountDao.getName();
+		
+		MembershipDAO membershipDao = context.getBean("membershipDAO", MembershipDAO.class);
 		membershipDao.addAccount();
 		
 		context.close();
