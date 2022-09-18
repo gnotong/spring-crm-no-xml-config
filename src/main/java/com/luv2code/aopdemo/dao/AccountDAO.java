@@ -17,12 +17,16 @@ public class AccountDAO {
 		System.out.println(account + " is added=" + isAdded);
 	}
 	
-	public List<Account> findAll() {
+	public List<Account> findAll() throws Exception {
 		List<Account> accounts = new ArrayList<>();
 
 		accounts.add(new Account("Yann"));
 		accounts.add(new Account("nahema"));
 		accounts.add(new Account("Maya"));
+		
+		if (true) {
+			throw new Exception("An error occurs in findAll");
+		}
 		
 		return accounts;
 	}

@@ -15,19 +15,23 @@ public class MainDemoAopApp {
 
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoAOPConfig.class);
 
-		AccountDAO accountDao = context.getBean("accountDAO", AccountDAO.class);		
+		AccountDAO accountDao = context.getBean("accountDAO", AccountDAO.class);
 		accountDao.addAccount(new Account("Fortuneo"), true);
 		accountDao.setName("YOYOO");
 		accountDao.getName();
-		
-		List<Account> accounts = accountDao.findAll();
-		
-		System.out.println("===>>>> accountDao.findAll in MainDemoAopApp");
-		System.out.println(accounts);
-		
+
+		List<Account> accounts;
+		try {
+			accounts = accountDao.findAll();
+			System.out.println("===>>>> accountDao.findAll in MainDemoAopApp");
+			System.out.println(accounts);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		MembershipDAO membershipDao = context.getBean("membershipDAO", MembershipDAO.class);
 		membershipDao.addAccount();
-		
+
 		context.close();
 	}
 }
