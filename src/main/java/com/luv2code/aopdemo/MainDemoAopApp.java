@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.luv2code.aopdemo.config.DemoAOPConfig;
 import com.luv2code.aopdemo.dao.AccountDAO;
 import com.luv2code.aopdemo.dao.MembershipDAO;
+import com.luv2code.aopdemo.entity.Account;
 
 public class MainDemoAopApp {
 
@@ -13,7 +14,7 @@ public class MainDemoAopApp {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoAOPConfig.class);
 
 		AccountDAO accountDao = context.getBean("accountDAO", AccountDAO.class);		
-		accountDao.addAccount();
+		accountDao.addAccount(new Account("Fortuneo"), true);
 		accountDao.setName("YOYOO");
 		accountDao.getName();
 		

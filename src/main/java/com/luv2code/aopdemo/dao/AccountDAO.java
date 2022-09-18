@@ -2,13 +2,16 @@ package com.luv2code.aopdemo.dao;
 
 import org.springframework.stereotype.Component;
 
+import com.luv2code.aopdemo.entity.Account;
+
 @Component
 public class AccountDAO {
 	
 	private String name;
 	
-	public void addAccount() {
+	public void addAccount(Account account, boolean isAdded) {
 		System.out.println(getClass() + " ADDING ACCOUNT");
+		System.out.println(account + " is added=" + isAdded);
 	}
 
 	public String getName() {
