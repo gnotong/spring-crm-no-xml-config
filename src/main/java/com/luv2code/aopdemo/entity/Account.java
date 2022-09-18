@@ -1,6 +1,10 @@
 package com.luv2code.aopdemo.entity;
 
+import java.util.logging.Logger;
+
 public class Account {
+	
+	private Logger logger = Logger.getLogger(getClass().getName());
 	
 	private String name;
 	
@@ -10,12 +14,12 @@ public class Account {
 	}
 
 	public String getName() {
-		System.out.println("Account.getName is called");
+		logger.info("Account.getName is called");
 		return name;
 	}
 
 	public void setName(String name) {
-		System.out.println("Account.setName is called");
+		logger.info("Account.setName is called");
 		this.name = name;
 	}
 

@@ -1,6 +1,7 @@
 package com.luv2code.aopdemo;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,6 +11,8 @@ import com.luv2code.aopdemo.dao.MembershipDAO;
 import com.luv2code.aopdemo.entity.Account;
 
 public class MainDemoAopApp {
+	
+	private static Logger logger = Logger.getLogger(MainDemoAopApp.class.getName());
 
 	public static void main(String[] args) {
 
@@ -24,12 +27,12 @@ public class MainDemoAopApp {
 		try {
 			accounts = accountDao.findAll();
 			delayedAccounts = accountDao.findAllDelay();
-			System.out.println("===>>>> accountDao.findAll in MainDemoAopApp");
-			System.out.println(accounts);
-			System.out.println("===>>>> accountDao.findAllDelay in MainDemoAopApp");
-			System.out.println(delayedAccounts);
+			logger.info("===>>>> accountDao.findAll in MainDemoAopApp");
+			logger.info(accounts.toString());
+			logger.info("===>>>> accountDao.findAllDelay in MainDemoAopApp");
+			logger.info(delayedAccounts.toString());
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.info(e.toString());
 		}
 
 		MembershipDAO membershipDao = context.getBean("membershipDAO", MembershipDAO.class);
